@@ -1,0 +1,9 @@
+<h2>撮影場所</h2>
+<p><%= @post.location %></p>
+<h2>感じたこと</h2>
+<p><%= @post.text %></p>
+
+<%= link_to '編集する', edit_post_path(@post.id) %><br>
+<%= link_to '削除',post_path(@post.id),
+    data: { turbo_method: 'delete', turbo_confirm: '予定を削除しますか？' } %>
+<%= link_to '投稿一覧ページへ', posts_path %>
