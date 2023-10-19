@@ -1,8 +1,15 @@
 <h1>編集する</h1>
 <%= form_with model:@post, url:"/posts/#{@post.id}", local:true do |f| %>
+  <% if @post.post_image? %>  <!-- アップロード画像がある場合に実行する -->
+      <%= image_tag @post.post_image.url, :size => '600x450' %>
+  <% end %>
   <h4>旅行先</h4>
   <%= f.text_field :location %>
   <h4>感想</h4>
   <%= f.text_area :text %><br>
+  <div class="field">
+  <%= f.label :投稿画像 %>
+  <%= f.file_field :post_image %>
+  </div>
   <%= f.submit '保存' %>
 <% end %>
